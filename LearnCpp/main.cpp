@@ -58,14 +58,10 @@ bool isRectangleCover(std::vector<std::vector<int>>& rectangles){
 }
 
 int main(int argc, const char * argv[]) {
-    std::vector<std::vector<int>> rects =
-    {{1,1,3,3},{3,1,4,2},{3,2,4,4},{1,3,2,4},{2,3,3,4}};
-    
-    isRectangleCover(rects);
-    //MyVector mv;
-    //mv.push_back(1);
-    //mv.push_back(2);
-    //mv.push_back(3);
+    MyIntVector mv;
+    mv.push_back(1);
+    mv.push_back(2);
+    mv.push_back(3);
     
     //int my_array[3];
     //int sz = &my_array[2] - my_array;

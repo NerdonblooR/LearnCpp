@@ -9,6 +9,9 @@
 #ifndef MyVector_h
 #define MyVector_h
 
+#include <stdio.h>
+#include <memory>
+
 template <typename T>
 class MyVector{
 public:
@@ -17,7 +20,7 @@ public:
     MyVector &operator=(const MyVector&);
     ~MyVector(){free();};
     
-    void push_back(const T &t) //bind to any type
+    void push_back(const T &t);//bind to any type
     void push_back(T &&t); //move version
     
     void pop_back();
@@ -45,8 +48,6 @@ private:
     void reallocate();
     
 };
-
-
 
 
 #endif /* MyVector_h */
