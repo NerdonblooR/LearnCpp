@@ -10,10 +10,35 @@
 struct RedBlackTreeNode{
     int key;
     int value;
-    int colour;
+    int colour;/*red=0, black=1*/
     RedBlackTreeNode* left;
     RedBlackTreeNode* right;
     RedBlackTreeNode* parent;
+
+    RedBlackTreeNode(): key(0), value(0), colour(1), left(), right(), parent(){};
+};
+
+class RedBlackTree{
+public:
+    RedBlackTree();
+    RedBlackTree(const RedBlackTree& source); //copy constructor
+    ~RedBlackTree();
+
+    void insert(const int key, const int value);
+    void insert(const RedBlackTreeNode& node);
+    void deleteNode(const int key);
+    void deleteNode(const RedBlackTreeNode& node);
+    RedBlackTreeNode& lookup(int key);
+    /*friend functions*/
+    friend std::ostream& operator<< (std::ostream& os, const RedBlackTree&);
+
+private:
+    void leftRotation(RedBlackTreeNode* node);
+    void rightRotation(RedBlackTreeNode* node));
+    void fixUpTree(RedBlackTreeNode* node);
+
+    RedBlackTreeNode* root;
+    RedBlackTreeNode* nil;
 };
 
 #endif //MYVECTOR_REDBLACKTREE_H
