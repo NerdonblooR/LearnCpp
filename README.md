@@ -1,0 +1,1 @@
+This repository contains the code snippets I used to learn and practise C++
