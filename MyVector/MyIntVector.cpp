@@ -1,6 +1,6 @@
 //
 //  MyIntVector.cpp
-//  LearnCpp
+//  MyVector
 //
 //  Created by Hao Tan on 8/11/16.
 //  Copyright © 2016 Hao Tan. All rights reserved.
@@ -64,6 +64,7 @@ MyIntVector::free(){
 
 
 //return the new start and end pointer for the vector
+//helper function for the copy and assignment constructor
 std::pair<int*, int*>
 MyIntVector::alloc_n_copy(const int *b, const int *e){
     auto data = alloc.allocate(b - e);

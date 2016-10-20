@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  LearnCpp
+//  MyVector
 //
 //  Created by Hao Tan on 2014-11-13.
 //  Copyright (c) 2014 Hao Tan. All rights reserved.
@@ -8,7 +8,15 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "MyIntVector.hpp"
+
+struct Trie{
+public:
+    char c;
+    std::vector<char> values;
+    Trie(): c(), values() {}
+};
 
 
 bool isRectangleCover(std::vector<std::vector<int>>& rectangles){
@@ -57,16 +65,41 @@ bool isRectangleCover(std::vector<std::vector<int>>& rectangles){
     
 }
 
+
+int longestSubstring(std::string s, int k) {
+    if (s.size() == 0 || k > s.size()) return 0;
+    if (k == 0) return s.size();
+
+    int fqTable[26] = {};
+    for (char& c :  s){
+        fqTable[c - 'a'] += 1;
+    }
+
+    int rlen = 0;
+    for (int i = 0; i < s.size(); ++i){
+        if (fqTable[s[i] - 'a'] < k){
+            break;
+        }
+        rlen++;
+    }
+
+    if (rlen == s.size()) return rlen;
+
+    int left = longestSubstring(s.substr(0, rlen), k);
+    int right = longestSubstring(s.substr(rlen+1), k);
+
+    return std::max(left,right);
+
+}
+
 int main(int argc, const char * argv[]) {
-    MyIntVector mv;
-    mv.push_back(1);
-    mv.push_back(2);
-    mv.push_back(3);
-    
+    //int a = longestSubstring("aaabb", 3);
     //int my_array[3];
     //int sz = &my_array[2] - my_array;
+    Trie a;
+
     
-    //std::cout << sz << std::endl;
+    std::cout << a.c << std::endl;
     
     return 0;
 }

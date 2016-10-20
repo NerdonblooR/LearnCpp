@@ -1,6 +1,6 @@
 //
 //  MyVector.hpp
-//  LearnCpp
+//  MyVector
 //
 //  Created by Hao Tan on 8/11/16.
 //  Copyright © 2016 Hao Tan. All rights reserved.
