@@ -20,7 +20,7 @@ struct RedBlackTreeNode{
 
 class RedBlackTree{
 public:
-    RedBlackTree();
+    RedBlackTree(): root(NULL), nil() {};
     RedBlackTree(const RedBlackTree& source); //copy constructor
     ~RedBlackTree();
 

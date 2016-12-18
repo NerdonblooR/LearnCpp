@@ -77,10 +77,6 @@ void MyVector::reserve(size_t sz) {
     auto cap = capacity();
     if (sz > cap) reallocate();
 }
-
-
-
-
 //a helper function for copy and assignment constructor
 template<typename T>
 std::pair<T*, T*> MyVector::alloc_n_copy(const T *start, const T *end) {
@@ -97,9 +93,6 @@ void MyVector::free() {
     alloc.deallocate(elements, size());
 
 }
-
-
-
 
 template<typename T>
 void MyVector::reallocate(){
