@@ -49,23 +49,24 @@ private:
     
 };
 
-
+template<typename T>
+std::allocator<T> MyVector<T>::alloc;
 
 template<typename T>
-void MyVector::push_back(const T& t){
+void MyVector<T>::push_back(const T& t){
     chk_n_alloc();
-    alloc.construct(first_free, std::move(t));
+    alloc.construct(first_free++, std::move(t));
 }
 
 
 template<typename T>
-void MyVector::push_back(T&& t) {
+void MyVector<T>::push_back(T&& t) {
     chk_n_alloc();
-    alloc.construct(first_free, t);
+    alloc.construct(first_free++, t);
 }
 
 template <typename T>
-void MyVector::pop_back() {
+void MyVector<T>::pop_back() {
     if (size() > 0){
         alloc.destroy(first_free--);
     }
@@ -73,20 +74,20 @@ void MyVector::pop_back() {
 }
 
 template<typename T>
-void MyVector::reserve(size_t sz) {
+void MyVector<T>::reserve(size_t sz) {
     auto cap = capacity();
     if (sz > cap) reallocate();
 }
 //a helper function for copy and assignment constructor
 template<typename T>
-std::pair<T*, T*> MyVector::alloc_n_copy(const T *start, const T *end) {
+std::pair<T*, T*> MyVector<T>::alloc_n_copy(const T *start, const T *end) {
     auto data = alloc.allocate(end-start);//alloc
     return {data, std::uninitialized_copy(start, end, data)};//copy
 }
 
 
 template <typename T>
-void MyVector::free() {
+void MyVector<T>::free() {
     for(auto p = elements; p != cap; p++){
         alloc.destroy(p);
     }
@@ -95,7 +96,7 @@ void MyVector::free() {
 }
 
 template<typename T>
-void MyVector::reallocate(){
+void MyVector<T>::reallocate(){
     auto sz = size();
     auto new_cap = sz ? 2 * sz : 1;
 
@@ -107,14 +108,13 @@ void MyVector::reallocate(){
         alloc.construct(dest, std::move(*ele));
     }
 
+    free();
+
     elements = new_ele;
     first_free = dest;
     cap = elements + new_cap;
 
-    free();
+
 }
-
-
-
 
 #endif /* MyVector_h */

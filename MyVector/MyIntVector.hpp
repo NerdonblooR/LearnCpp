@@ -6,8 +6,8 @@
 //  Copyright © 2016 Hao Tan. All rights reserved.
 //
 
-#ifndef MyVector_hpp
-#define MyVector_hpp
+#ifndef MyIntVector_hpp
+#define MyIntVector_hpp
 
 #include <stdio.h>
 #include <memory>

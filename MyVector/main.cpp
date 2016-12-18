@@ -7,16 +7,22 @@
 //
 
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include "MyIntVector.hpp"
+#include "MyVector.hpp"
 
 
 
 int main(int argc, const char * argv[]) {
 
+    MyVector<int> intVector;
+    int a = 3;
+    int b = 4;
+    intVector.push_back(a);
+    intVector.push_back(b);
 
-    
+    std::cout << intVector[0] << std::endl;
+    std::cout << intVector[1] << std::endl;
+
+
     return 0;
 }
 
