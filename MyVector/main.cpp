@@ -14,13 +14,8 @@
 
 
 int main(int argc, const char * argv[]) {
-    //int a = longestSubstring("aaabb", 3);
-    //int my_array[3];
-    //int sz = &my_array[2] - my_array;
-    Trie a;
 
-    
-    std::cout << a.c << std::endl;
+
     
     return 0;
 }
